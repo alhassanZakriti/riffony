@@ -2,11 +2,13 @@
 
 import { useEffect, useState } from "react";
 import { PageHeader } from "@/components/training/page-header";
-import { Button } from "@/components/ui/button";
+import { Button, ButtonLink } from "@/components/ui/button";
 import { Field, Kbd, Select, Skeleton, Slider, Switch } from "@/components/ui/controls";
 import { Segmented } from "@/components/ui/segmented";
 import { Card, CardBody, CardHeader } from "@/components/ui/card";
 import { toast } from "@/components/ui/toast";
+import { signOutAction } from "@/features/auth/actions";
+import { authClient } from "@/lib/auth/client";
 import { ALL_FINGERS, fingerDisplay } from "@/features/finger-training/fingers";
 import { INSTRUMENTS } from "@/lib/audio/instruments";
 import { listAudioInputs } from "@/lib/audio/microphone";
@@ -38,6 +40,13 @@ export function SettingsPage() {
   const restoreSnapshot = useAppStore((s) => s.restoreSnapshot);
   const [devices, setDevices] = useState<MediaDeviceInfo[]>([]);
   const [listeningFor, setListeningFor] = useState<FingerId | null>(null);
+  const [accountEmail, setAccountEmail] = useState<string | null>(null);
+
+  useEffect(() => {
+    void authClient.getSession().then(({ data }) => {
+      setAccountEmail(data?.user?.email ?? null);
+    });
+  }, []);
 
   useEffect(() => {
     void listAudioInputs().then(setDevices).catch(() => {});
@@ -72,13 +81,20 @@ export function SettingsPage() {
       <PageHeader
         eyebrow="Preferences"
         title="Settings"
-        description="Audio, difficulty defaults, keyboard mapping, and appearance. Progress is stored on this device."
+        description="Account, audio, difficulty defaults, keyboard mapping, and appearance."
       />
 
       <div className="space-y-4">
         <Card>
-          <CardHeader title="Profile" description="Optional display name for the overview greeting." />
-          <CardBody className="pt-0">
+          <CardHeader
+            title="Account"
+            description={
+              accountEmail
+                ? "Signed in — progress syncs to Neon Postgres."
+                : "Sign in to sync XP, sessions, and puzzle history across devices."
+            }
+          />
+          <CardBody className="space-y-4 pt-0">
             <Field label="Display name">
               <input
                 className="h-9 w-56 rounded-[10px] border border-line bg-bg px-3 text-[13px] text-fg outline-none focus-visible:border-accent"
@@ -87,6 +103,27 @@ export function SettingsPage() {
                 onChange={(e) => updateSettings({ displayName: e.target.value.slice(0, 40) })}
               />
             </Field>
+            {accountEmail ? (
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <div className="text-[13px] text-muted">
+                  Signed in as <span className="text-fg">{accountEmail}</span>
+                </div>
+                <form action={signOutAction}>
+                  <Button type="submit" variant="secondary" size="sm">
+                    Sign out
+                  </Button>
+                </form>
+              </div>
+            ) : (
+              <div className="flex flex-wrap gap-2">
+                <ButtonLink href="/login" variant="primary" size="sm">
+                  Sign in
+                </ButtonLink>
+                <ButtonLink href="/register" variant="secondary" size="sm">
+                  Create account
+                </ButtonLink>
+              </div>
+            )}
           </CardBody>
         </Card>
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { CloudSync } from "@/components/providers/cloud-sync";
 import { Toaster } from "@/components/ui/toast";
 import { setMasterVolume } from "@/lib/audio/context";
 import { useAppStore } from "@/lib/store";
@@ -62,6 +63,7 @@ export function AppProviders({ children }: { children: React.ReactNode }) {
   return (
     <>
       {children}
+      <CloudSync />
       <Toaster />
     </>
   );
