@@ -1,26 +1,220 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@custom-variant light (&:where([data-theme="light"], [data-theme="light"] *));
+
+:root,
+[data-theme="dark"] {
+  --bg: #09090d;
+  --bg-deep: #050508;
+  --surface: #101014;
+  --elevated: #18181f;
+  --panel: #22222b;
+  --line: #30303b;
+  --line-strong: #3f3f4d;
+  --fg: #f5f4f8;
+  --muted: #a5a3b2;
+  --subtle: #6e6c7a;
+
+  --accent: #9b6dff;
+  --accent-2: #7447f5;
+  --accent-fg: #0c0618;
+  --cyan: #40d9f2;
+  --blue: #527bff;
+  --coral: #ff6b7a;
+  --orange: #ffad5a;
+  --lime: #b9f36a;
+  --success: #b9f36a;
+  --error: #ff6b7a;
+  --warning: #ffad5a;
+
+  --glow-brand: color-mix(in srgb, var(--accent) 28%, transparent);
+  --glow-cyan: color-mix(in srgb, var(--cyan) 22%, transparent);
+  --glow-orange: color-mix(in srgb, var(--orange) 20%, transparent);
+
+  --gradient-brand: linear-gradient(135deg, #9b6dff 0%, #527bff 100%);
+  --gradient-cta: linear-gradient(135deg, #9b6dff 0%, #7447f5 55%, #527bff 100%);
+  --gradient-mesh: radial-gradient(ellipse 80% 55% at 15% -10%, var(--glow-brand), transparent 55%),
+    radial-gradient(ellipse 60% 45% at 95% 5%, var(--glow-cyan), transparent 50%),
+    radial-gradient(ellipse 50% 40% at 70% 100%, color-mix(in srgb, var(--accent-2) 18%, transparent), transparent 55%);
+
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  --bg: #f4f3f8;
+  --bg-deep: #ebeaf2;
+  --surface: #ffffff;
+  --elevated: #f0eff6;
+  --panel: #e7e5ef;
+  --line: #d8d5e2;
+  --line-strong: #c2beca;
+  --fg: #14131a;
+  --muted: #5c5a6a;
+  --subtle: #8a8798;
+
+  --accent: #7447f5;
+  --accent-2: #9b6dff;
+  --accent-fg: #ffffff;
+  --cyan: #1aa8c4;
+  --blue: #3b5fe0;
+  --coral: #e24b5c;
+  --orange: #d8892e;
+  --lime: #5ea012;
+  --success: #3f8f2e;
+  --error: #e24b5c;
+  --warning: #d8892e;
+
+  --glow-brand: color-mix(in srgb, var(--accent) 16%, transparent);
+  --glow-cyan: color-mix(in srgb, var(--cyan) 12%, transparent);
+  --glow-orange: color-mix(in srgb, var(--orange) 12%, transparent);
+  --gradient-brand: linear-gradient(135deg, #7447f5 0%, #527bff 100%);
+  --gradient-cta: linear-gradient(135deg, #7447f5 0%, #527bff 100%);
+  --gradient-mesh: radial-gradient(ellipse 80% 55% at 15% -10%, var(--glow-brand), transparent 55%),
+    radial-gradient(ellipse 60% 45% at 95% 5%, var(--glow-cyan), transparent 50%);
+
+  color-scheme: light;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--bg);
+  --color-bg-deep: var(--bg-deep);
+  --color-surface: var(--surface);
+  --color-elevated: var(--elevated);
+  --color-panel: var(--panel);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+  --color-accent-fg: var(--accent-fg);
+  --color-cyan: var(--cyan);
+  --color-blue: var(--blue);
+  --color-coral: var(--coral);
+  --color-orange: var(--orange);
+  --color-lime: var(--lime);
+  --color-success: var(--success);
+  --color-error: var(--error);
+  --color-warning: var(--warning);
+  --font-sans: var(--font-manrope), var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-display: var(--font-display), var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --radius-card: 16px;
+  --radius-control: 12px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.font-display {
+  font-family: var(--font-display);
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--fg);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--accent) 40%, transparent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Ambient app canvas */
+.app-mesh {
+  background-color: var(--bg);
+  background-image: var(--gradient-mesh);
+  background-attachment: fixed;
+}
+
+.surface-glass {
+  background: color-mix(in srgb, var(--elevated) 78%, transparent);
+  border: 1px solid color-mix(in srgb, var(--line) 80%, transparent);
+  backdrop-filter: blur(16px);
+}
+
+.gradient-text {
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.glow-ring {
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 35%, transparent),
+    0 0 40px -12px var(--glow-brand);
+}
+
+/* Range input styled to the design system. */
+input[type="range"].range {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 20px;
+  background: transparent;
+  cursor: pointer;
+}
+input[type="range"].range::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    var(--accent) 0%,
+    var(--accent) var(--fill, 50%),
+    var(--line-strong) var(--fill, 50%)
+  );
+}
+input[type="range"].range::-moz-range-track {
+  height: 4px;
+  border-radius: 999px;
+  background: var(--line-strong);
+}
+input[type="range"].range::-moz-range-progress {
+  height: 4px;
+  border-radius: 999px;
+  background: var(--accent);
+}
+input[type="range"].range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  margin-top: -6px;
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  background: var(--fg);
+  border: 0;
+}
+input[type="range"].range::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  background: var(--fg);
+  border: 0;
+}
+
+[data-reduced-motion="true"] *,
+[data-reduced-motion="true"] *::before,
+[data-reduced-motion="true"] *::after {
+  animation-duration: 0.001ms !important;
+  transition-duration: 0.001ms !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
 }
