@@ -4,7 +4,7 @@ import { PuzzlePlayer } from "@/features/daily-puzzle/puzzle-player";
 
 export const metadata: Metadata = {
   title: "Daily Puzzle",
-  description: "Play today’s shared RIFFLEX challenge — one skill-focused puzzle every UTC day.",
+  description: "Play today’s shared RIFFONY challenge — one skill-focused puzzle every UTC day.",
 };
 
 export default function DailyPuzzlePage() {

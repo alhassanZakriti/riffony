@@ -9,7 +9,7 @@ export default function PrivacyPage() {
     <article className="prose-invert mx-auto max-w-2xl px-4 py-14 sm:px-6">
       <h1 className="font-display text-[32px] font-semibold tracking-tight">Privacy Policy</h1>
       <p className="mt-4 text-[14px] leading-relaxed text-muted">
-        RIFFLEX currently runs as a local-first web application. Training progress, settings, and daily puzzle
+        RIFFONY currently runs as a local-first web application. Training progress, settings, and daily puzzle
         results are stored in your browser’s local storage on this device. We do not operate a cloud account database in
         this build.
       </p>

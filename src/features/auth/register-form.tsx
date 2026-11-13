@@ -21,7 +21,7 @@ export function RegisterForm({
     <div className="space-y-6">
       <div>
         <p className="text-[12px] font-semibold uppercase tracking-[0.16em] text-accent">Create account</p>
-        <h1 className="mt-2 font-display text-[32px] font-semibold tracking-tight">Join RIFFLEX</h1>
+        <h1 className="mt-2 font-display text-[32px] font-semibold tracking-tight">Join RIFFONY</h1>
         <p className="mt-2 text-[14px] leading-relaxed text-muted">
           Save XP, streaks, and training history to your account across devices.
         </p>

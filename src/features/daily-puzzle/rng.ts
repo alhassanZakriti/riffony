@@ -19,7 +19,7 @@ export function mulberry32(seed: number) {
   };
 }
 
-export function seededRng(dateKey: string, salt = "musical-reflex-daily") {
+export function seededRng(dateKey: string, salt = "riffony-daily") {
   return mulberry32(hashSeed(`${salt}:${dateKey}`));
 }
 

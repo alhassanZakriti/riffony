@@ -194,10 +194,10 @@ export function PuzzlePlayer({ initialDate }: { initialDate?: string }) {
 
   const share = async () => {
     if (!result) return;
-    const text = `RIFFLEX Daily Puzzle · ${result.date}\n${PUZZLE_KIND_LABEL[result.kind]} · ${result.score}/100 (${result.rating})\nPlay today’s challenge on RIFFLEX`;
+    const text = `RIFFONY Daily Puzzle · ${result.date}\n${PUZZLE_KIND_LABEL[result.kind]} · ${result.score}/100 (${result.rating})\nPlay today’s challenge on RIFFONY`;
     try {
       if (navigator.share) {
-        await navigator.share({ title: "RIFFLEX Daily Puzzle", text });
+        await navigator.share({ title: "RIFFONY Daily Puzzle", text });
       } else {
         await navigator.clipboard.writeText(text);
       }

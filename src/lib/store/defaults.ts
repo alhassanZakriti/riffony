@@ -75,4 +75,6 @@ export const SESSION_LENGTHS: Record<
   long: { label: "Long", tempoBeats: 96, guessRounds: 12, fingerTrials: 60, noteTrials: 25, fretboardTrials: 36, voiceTrials: 18 },
 };
 
-export const STORAGE_KEY = "musical-reflex";
+export const STORAGE_KEY = "riffony";
+/** Previous localStorage key — migrated once into STORAGE_KEY. */
+export const LEGACY_STORAGE_KEY = "musical-reflex";

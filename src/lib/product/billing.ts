@@ -45,7 +45,7 @@ export const BILLING = {
   earlyAccess: {
     title: "Free while in early access",
     description:
-      "RIFFLEX currently runs fully in your browser. Create a local profile to save progress, streaks, and daily puzzle results on this device.",
+      "RIFFONY currently runs fully in your browser. Create a local profile to save progress, streaks, and daily puzzle results on this device.",
     ctaLabel: "Start Free Training",
     href: "/register",
     bullets: [

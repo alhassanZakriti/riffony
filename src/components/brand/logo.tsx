@@ -2,8 +2,8 @@ import Image from "next/image";
 import { BRAND } from "@/lib/product/brand";
 import { cn } from "@/lib/utils";
 
-/** Native wordmark aspect (977×90). */
-const WORDMARK_RATIO = 977 / 90;
+/** Native wordmark aspect (1024×94). */
+const WORDMARK_RATIO = 1024 / 94;
 /** Collapsed mark aspect (149×90) — wider than tall, must not be forced square. */
 const COLLAPSED_MARK_RATIO = 100 / 90;
 
@@ -37,7 +37,7 @@ export function BrandMark({
   );
 }
 
-/** Official RIFFLEX wordmark (wide lockup). */
+/** Official RIFFONY wordmark (wide lockup). */
 export function BrandLockup({
   className,
   height = 22,

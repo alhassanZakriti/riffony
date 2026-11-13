@@ -3,7 +3,7 @@ import { PricingSection } from "@/features/marketing/pricing-section";
 
 export const metadata: Metadata = {
   title: "Pricing",
-  description: "Free early access to RIFFLEX training. Paid plans will appear here when billing is enabled.",
+  description: "Free early access to RIFFONY training. Paid plans will appear here when billing is enabled.",
 };
 
 export default function PricingPage() {

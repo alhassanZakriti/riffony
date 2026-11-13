@@ -11,7 +11,22 @@ import type { PositionMastery } from "@/features/fretboard/types";
 import type { NoteMasteryMap } from "@/features/note-recognition/progression";
 import { emptyVoiceProgress, type VoiceProgress } from "@/features/voice-training/types";
 import { dayKey, mean, uid } from "@/lib/utils";
-import { DEFAULT_FRETBOARD, DEFAULT_SETTINGS, STORAGE_KEY } from "./defaults";
+import { DEFAULT_FRETBOARD, DEFAULT_SETTINGS, LEGACY_STORAGE_KEY, STORAGE_KEY } from "./defaults";
+
+function migrateLegacyLocalStorage() {
+  if (typeof window === "undefined") return;
+  try {
+    if (localStorage.getItem(STORAGE_KEY)) return;
+    const legacy = localStorage.getItem(LEGACY_STORAGE_KEY);
+    if (!legacy) return;
+    localStorage.setItem(STORAGE_KEY, legacy);
+    localStorage.removeItem(LEGACY_STORAGE_KEY);
+  } catch {
+    /* ignore quota / private mode */
+  }
+}
+
+migrateLegacyLocalStorage();
 
 export type SessionDraft = Omit<SessionRecord, "id" | "xp" | "xpBreakdown" | "previousBest">;
 

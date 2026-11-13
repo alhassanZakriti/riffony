@@ -74,7 +74,7 @@ export function LoginForm() {
         <p className="text-[12px] font-medium uppercase tracking-[0.16em] text-accent">Sign in</p>
         <h1 className="mt-2 font-display text-[32px] font-semibold tracking-tight">Continue on this device</h1>
         <p className="mt-3 text-[14px] leading-relaxed text-muted">
-          RIFFLEX currently stores progress in your browser. There is no cloud password yet — opening the app on
+          RIFFONY currently stores progress in your browser. There is no cloud password yet — opening the app on
           this device restores your sessions and daily puzzle history.
         </p>
       </div>

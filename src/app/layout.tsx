@@ -58,7 +58,7 @@ export const viewport: Viewport = {
   colorScheme: "dark",
 };
 
-const themeBoot = `(function(){try{var k='musical-reflex';var raw=localStorage.getItem(k);var theme='dark';var reduced=false;if(raw){var p=JSON.parse(raw);var s=(p.state&&p.state.settings)||p.settings;if(s){theme=s.theme||'dark';reduced=!!s.reducedMotion;}}if(theme==='system'){theme=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}document.documentElement.dataset.theme=theme;document.documentElement.dataset.reducedMotion=reduced?'true':'false';}catch(e){document.documentElement.dataset.theme='dark';}})();`;
+const themeBoot = `(function(){try{var k='riffony';var raw=localStorage.getItem(k)||localStorage.getItem('musical-reflex');var theme='dark';var reduced=false;if(raw){var p=JSON.parse(raw);var s=(p.state&&p.state.settings)||p.settings;if(s){theme=s.theme||'dark';reduced=!!s.reducedMotion;}}if(theme==='system'){theme=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}document.documentElement.dataset.theme=theme;document.documentElement.dataset.reducedMotion=reduced?'true':'false';}catch(e){document.documentElement.dataset.theme='dark';}})();`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

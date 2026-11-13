@@ -19,8 +19,8 @@ export default function ForgotPasswordPage() {
         </ButtonLink>
         <p className="text-center text-[13px] text-subtle">
           Need help?{" "}
-          <Link href="mailto:hello@rifflex.app" className="text-fg underline-offset-2 hover:underline">
-            hello@rifflex.app
+          <Link href="mailto:hello@riffony.app" className="text-fg underline-offset-2 hover:underline">
+            hello@riffony.app
           </Link>
         </p>
       </div>

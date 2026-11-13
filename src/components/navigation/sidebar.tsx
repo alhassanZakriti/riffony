@@ -34,7 +34,7 @@ export function Sidebar() {
         <Link
           href="/app"
           className={cn("flex items-center overflow-visible", collapsed ? "justify-center" : "min-w-0 flex-1")}
-          aria-label="RIFFLEX overview"
+          aria-label="RIFFONY overview"
         >
           <BrandWordmark collapsed={collapsed} />
         </Link>

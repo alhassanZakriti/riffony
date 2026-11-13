@@ -42,3 +42,10 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .neon
+
+.vercel
+.env*.local
+
+.env.vercel.production
+.env.vercel.*
+
